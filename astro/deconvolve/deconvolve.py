@@ -15,8 +15,8 @@ CONDA-VU Galaxy Image Deconvolution
 from __future__ import print_function
 from builtins import range, zip
 import pysap
-from pysap.numerics.linear import WaveletConvolve2
-from pysap.plugins.astro.deconvolve.wavelet_filters import get_cospy_filters
+from mri.numerics.linear import WaveletConvolve2
+from astro.deconvolve.wavelet_filters import get_cospy_filters
 from pysap.utils import condatvu_logo
 
 # Third party import
