@@ -22,7 +22,7 @@ CLASSIFIERS = [
     "Topic :: Scientific/Engineering"]
 AUTHOR = """
 Antoine Grigis <antoine.grigis@cea.fr>
-Samuel Farrens <samuel.farrens@gmail.com>
+Samuel Farrens <samuel.farrens@cea.fr>
 Jean-Luc Starck <jl.stark@cea.fr>
 Philippe Ciuciu <philippe.ciuciu@cea.fr>
 """
