@@ -43,7 +43,7 @@ def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
 
     # Create fake data.
     fake_data = np.zeros(data_shape)
-    fake_data[list(zip(data_shape // 2))] = 1
+    fake_data[tuple(zip(data_shape // 2))] = 1
 
     # Transform fake data
     wavelet_transform = (load_transform(transform_name)
