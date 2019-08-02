@@ -15,7 +15,7 @@ CONDA-VU Galaxy Image Deconvolution
 from __future__ import print_function
 from builtins import range, zip
 import pysap
-from mri.numerics.linear import WaveletConvolve2
+from .linear import WaveletConvolve2
 from astro.deconvolve.wavelet_filters import get_cospy_filters
 from pysap.utils import condatvu_logo
 
@@ -87,7 +87,8 @@ def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
     return noise_est * filter_norm
 
 
-def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1):
+def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
+                           progress=True):
     """Sparse Deconvolution with Condat-Vu
 
     Parameters
@@ -97,9 +98,13 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1):
     psf : np.ndarray
         Input PSF, 2D image
     n_iter : int, optional
-        Maximum number of iterations
+        Maximum number of iterations, default is 300
     n_reweights : int, optional
-        Number of reweightings
+        Number of reweightings, default is 1
+    verbose : bool, optional
+        Verbosity option, default is True
+    progress : bool, optional
+        Option to show progress bar, default is True
 
     Returns
     -------
@@ -108,7 +113,8 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1):
     """
 
     # Print the algorithm set-up
-    print(condatvu_logo())
+    if verbose:
+        print(condatvu_logo())
 
     # Define the wavelet filters
     filters = (get_cospy_filters(data.shape,
@@ -134,18 +140,18 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1):
 
     # Set the cost function
     cost_op = costObj([grad_op, prox_op, prox_dual_op], tolerance=1e-6,
-                      cost_interval=1, plot_output=True, verbose=False)
+                      cost_interval=1, plot_output=True, verbose=verbose)
 
     # Set the optimisation algorithm
     alg = Condat(primal, dual, grad_op, prox_op, prox_dual_op, linear_op,
-                 cost_op, rho=0.8, sigma=0.5, tau=0.5, auto_iterate=False)
+                 cost_op, rho=0.8, sigma=0.5, tau=0.5, auto_iterate=False,
+                 progress=progress)
 
     # Run the algorithm
     alg.iterate(max_iter=n_iter)
 
     # Implement reweigting
     for rw_num in range(n_reweights):
-        print(' - Reweighting: {}'.format(rw_num + 1))
         reweight.reweight(linear_op.op(alg.x_final))
         alg.iterate(max_iter=n_iter)
 
