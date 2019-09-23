@@ -34,6 +34,17 @@ def denoise(image, n_scales=4):
     np.ndarray
         Denoised image
 
+    Examples
+    --------
+    >>> import numpy as np
+    >>> from pysap.astro.denoising.denoise import denoise
+    >>> np.random.seed(1)
+    >>> data = np.random.randn(3, 3)
+    >>> denoise(data)
+    array([[-0.08110572, -0.07125647, -0.06140723],
+       [-0.08164661, -0.07204223, -0.06243785],
+       [-0.06603668, -0.05656169, -0.04708671]])
+
     """
 
     sigma_est_scales = sigma_scales(noise_est(image), n_scales)

@@ -45,7 +45,7 @@ def sigma_clip(data, n_iter=3):
     Examples
     --------
     >>> import numpy as np
-    >>> from tutorial_utils import sigma_clip
+    >>> from pysap.astro.denoising.noise import sigma_clip
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> sigma_clip(data)
@@ -95,7 +95,7 @@ def noise_est(data, n_iter=3):
     Examples
     --------
     >>> import numpy as np
-    >>> from tutorial_utils import noise_est
+    >>> from pysap.astro.denoising.noise import noise_est
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> noise_est(data)
@@ -143,7 +143,7 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
 
     Examples
     --------
-    >>> from tutorial_utils import sigma_scales
+    >>> from pysap.astro.denoising.noise import sigma_scales
     >>> sigma_scales(1)
     array([0.89079631, 0.20066385, 0.0855075 ])
 

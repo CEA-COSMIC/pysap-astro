@@ -45,7 +45,7 @@ def decompose(data, n_scales=4):
     Examples
     --------
     >>> import numpy as np
-    >>> from tutorial_utils import decompose
+    >>> from pysap.astro.denoising.wavelet import decompose
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> decompose(data)
@@ -107,7 +107,7 @@ def recombine(data):
     Examples
     --------
     >>> import numpy as np
-    >>> from tutorial_utils import recombine
+    >>> from pysap.astro.denoising.wavelet import recombine
     >>> np.random.seed(0)
     >>> data = np.random.ranf((4, 3, 3))
     >>> recombine(data)
