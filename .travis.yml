@@ -18,10 +18,10 @@ branches:
   only:
     - master
 
-# prep installation 
+# prep installation
 before_istall:
   - if [ $TRAVIS_PYTHON_VERSION == "3.6" ]; then
-      export CPLUS_INCLUDE_PATH=/opt/python/3.6.3/include/python3.6m;
+      export CPLUS_INCLUDE_PATH=/opt/python/3.6.7/include/python3.6m;
     fi
   - if [ $TRAVIS_PYTHON_VERSION == "3.7" ]; then
       export CPLUS_INCLUDE_PATH=/opt/python/3.7.1/include/python3.7m;
@@ -37,6 +37,7 @@ install:
 # run unit tests
 script:
   - python -c "import pysap"
+  - pip show python-pysap
   - python setup.py test
 
 # run coverage tests
