@@ -1,0 +1,32 @@
+language: python
+
+matrix:
+    include:
+        - python: 3.5
+        - python: 3.6
+        - python: 3.7
+          dist: xenial
+          sudo: true
+
+# GitHub branch
+branches:
+  only:
+    - master
+
+# install package and dependencies
+install:
+  - pip install coverage nose pytest pytest-cov pytest-pep8
+  - pip install numpy modopt sf_tools
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pip install coveralls; fi
+
+# run unit tests
+script:
+  - python setup.py test
+
+# run coverage tests
+after_success:
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then coveralls; fi
+
+# notification settings
+notification:
+  email: false
