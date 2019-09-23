@@ -27,6 +27,7 @@ install:
 
 # run unit tests
 script:
+  - python -c "import pysap"
   - python setup.py test
 
 # run coverage tests
