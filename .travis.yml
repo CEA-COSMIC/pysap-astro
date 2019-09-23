@@ -37,7 +37,7 @@ install:
 # run unit tests
 script:
   - python -c "import pysap"
-  - ls /home/travis/virtualenv/python3.6.7/lib/python3.6/site-packages
+  - python -c "import pysparse"
   - python setup.py test
 
 # run coverage tests
