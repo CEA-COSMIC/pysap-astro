@@ -8,6 +8,11 @@ matrix:
           dist: xenial
           sudo: true
 
+addons:
+  apt:
+    packages:
+      - cmake
+
 # GitHub branch
 branches:
   only:
@@ -17,6 +22,7 @@ branches:
 install:
   - pip install coverage nose pytest pytest-cov pytest-pep8
   - pip install numpy modopt sf_tools
+  - pip install git+https://github.com/CEA-COSMIC/pysap
   - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then pip install coveralls; fi
 
 # run unit tests
