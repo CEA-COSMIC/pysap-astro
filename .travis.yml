@@ -26,6 +26,7 @@ before_istall:
   - if [ $TRAVIS_PYTHON_VERSION == "3.7" ]; then
       export CPLUS_INCLUDE_PATH=/opt/python/3.7.1/include/python3.7m;
     fi
+  - python3 --version
 
 # install package and dependencies
 install:
