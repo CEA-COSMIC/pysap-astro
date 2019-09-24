@@ -8,10 +8,10 @@ matrix:
           dist: xenial
           sudo: true
 
-addons:
-  apt:
-    packages:
-      - cmake
+# addons:
+#   apt:
+#     packages:
+#       - cmake
 
 # GitHub branch
 branches:
@@ -20,16 +20,21 @@ branches:
 
 # prep installation
 before_istall:
-  - if [ $TRAVIS_PYTHON_VERSION == "3.6" ]; then
-      export CPLUS_INCLUDE_PATH=/opt/python/3.6.7/include/python3.6m;
-    fi
-  - if [ $TRAVIS_PYTHON_VERSION == "3.7" ]; then
-      export CPLUS_INCLUDE_PATH=/opt/python/3.7.1/include/python3.7m;
-    fi
+  - sudo apt-get update
+  - sudo updatedb
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - chmod +x miniconda.sh
+  - ./miniconda.sh -b -p $HOME/miniconda
+  - export PATH=$HOME/miniconda/bin:$PATH
+  - conda update --yes conda
+  - conda info -a
 
 # install package and dependencies
 install:
-  - python3 --version
+  - conda create -n testenv --yes pip python=$TRAVIS_PYTHON_VERSION cmake
+  - source activate testenv
+  - which python
+  - which pip
   - pip install coverage nose pytest pytest-cov pytest-pep8
   - pip install numpy modopt sf_tools
   - pip install git+https://github.com/CEA-COSMIC/pysap
