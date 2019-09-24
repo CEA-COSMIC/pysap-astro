@@ -33,7 +33,7 @@ before_install:
 install:
   - conda create -n testenv --yes pip python=$TRAVIS_PYTHON_VERSION
   - source activate testenv
-  - conda install cmake
+  - conda install cmake -y
   - which python
   - which pip
   - pip install coverage nose pytest pytest-cov pytest-pep8
