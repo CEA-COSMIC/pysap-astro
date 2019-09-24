@@ -8,11 +8,6 @@ matrix:
           dist: xenial
           sudo: true
 
-# addons:
-#   apt:
-#     packages:
-#       - cmake
-
 # GitHub branch
 branches:
   only:
@@ -34,8 +29,6 @@ install:
   - conda create -n testenv --yes pip python=$TRAVIS_PYTHON_VERSION
   - source activate testenv
   - conda install cmake -y
-  - which python
-  - which pip
   - pip install coverage nose pytest pytest-cov pytest-pep8
   - pip install numpy modopt sf_tools
   - pip install git+https://github.com/CEA-COSMIC/pysap
@@ -44,7 +37,6 @@ install:
 # run unit tests
 script:
   - python -c "import pysap"
-  - python -c "import pysparse; print(pysparse.__file__)"
   - python setup.py test
 
 # run coverage tests
