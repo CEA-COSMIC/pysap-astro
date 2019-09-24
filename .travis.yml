@@ -37,7 +37,7 @@ install:
 # run unit tests
 script:
   - python -c "import pysap"
-  - python -c "import pysparse"
+  - python -c "import pysparse; print(pysparse.__file__)"
   - python setup.py test
 
 # run coverage tests
