@@ -2,7 +2,7 @@
 pySAP-astro
 ===============
 
-|travis| |coveralls| |license| |python35| |python36| |python37|
+|travis| |coveralls| |python35| |python36| |python37|
 
 .. |travis| image:: https://travis-ci.org/CEA-COSMIC/pysap-astro.svg?branch=master
   :target: https://travis-ci.org/CEA-COSMIC/pysap-astro
