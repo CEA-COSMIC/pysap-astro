@@ -30,13 +30,16 @@ Philippe Ciuciu <philippe.ciuciu@cea.fr>
 setup(
     name="pysap-astro",
     description="Python Sparse data Analysis Package external ASTRO plugin.",
-    long_description="Python Sparse data Analysis Package external ASTRO plugin.",
+    long_description=("Python Sparse data Analysis Package external ASTRO "
+                      "plugin."),
     license="CeCILL-B",
     classifiers="CLASSIFIERS",
     author=AUTHOR,
     author_email="XXX",
     version="0.0.0",
-    url="https://github.com/CEA-COSMIC/pysap-mri",
+    url="https://github.com/CEA-COSMIC/pysap-astro",
     packages=find_packages(),
-    platforms="OS Independent"
+    platforms="OS Independent",
+    setup_requires=['pytest-runner', ],
+    tests_require=['pytest>=5.0.1', 'pytest-cov>=2.7.1', 'pytest-pep8'],
 )
