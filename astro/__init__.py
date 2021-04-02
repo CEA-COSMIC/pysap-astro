@@ -7,7 +7,7 @@
 # for details.
 ##########################################################################
 
-"""This module defines all the Astro related plugins."""
+"""Module defines all the Astro related plugins."""
 
 __all__ = ['deconvolution', 'denoising']
 

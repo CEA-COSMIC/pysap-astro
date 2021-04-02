@@ -43,8 +43,9 @@ def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
     fake_data[tuple(zip(data_shape // 2))] = 1
 
     # Transform fake data
-    wavelet_transform = (load_transform(transform_name)
-                         (nb_scale=n_scales, verbose=True))
+    wavelet_transform = (
+        load_transform(transform_name)(nb_scale=n_scales, verbose=True)
+    )
     wavelet_transform.data = fake_data
     wavelet_transform.analysis()
     filters = np.array(wavelet_transform.analysis_data)

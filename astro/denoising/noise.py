@@ -158,5 +158,8 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     dirac = np.zeros(kernel_shape, dtype=float)
     dirac[tuple(zip(kernel_shape // 2))] = 1.
 
-    return float(sigma) * np.linalg.norm(decompose(dirac, n_scales=n_scales),
-                                         axis=(1, 2))[:-1]
+    return (
+        float(sigma) * np.linalg.norm(
+            decompose(dirac, n_scales=n_scales), axis=(1, 2)
+        )[:-1]
+    )

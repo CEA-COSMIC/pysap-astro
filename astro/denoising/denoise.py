@@ -48,7 +48,9 @@ def denoise(image, n_scales=4):
         np.array([4] + [3] * sigma_est_scales[:-1].size) * sigma_est_scales
     )
     data_decomp = decompose(image, n_scales)
-    data_thresh = np.vstack([thresh(data_decomp[:-1].T, weights).T,
-                             data_decomp[-1, None]])
+    data_thresh = np.vstack([
+        thresh(data_decomp[:-1].T, weights).T,
+        data_decomp[-1, None]
+    ])
 
     return recombine(data_thresh)

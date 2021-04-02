@@ -32,5 +32,9 @@ class WaveletConvolve2(LinearParent):
 
         self._filters = filters
         self.op = lambda x: filter_convolve(x, self._filters, method=method)
-        self.adj_op = lambda x: filter_convolve(x, self._filters,
-                                                filter_rot=True, method=method)
+        self.adj_op = lambda x: filter_convolve(
+            x,
+            self._filters,
+            filter_rot=True,
+            method=method,
+        )
