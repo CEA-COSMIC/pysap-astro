@@ -13,8 +13,8 @@ Galaxy Image Denoising
 
 import numpy as np
 from modopt.signal.noise import thresh
-from .noise import noise_est, sigma_scales
-from .wavelet import decompose, recombine
+from pysap.plugins.astro.denoising.noise import noise_est, sigma_scales
+from pysap.plugins.astro.denoising.wavelet import decompose, recombine
 
 
 def denoise(image, n_scales=4):

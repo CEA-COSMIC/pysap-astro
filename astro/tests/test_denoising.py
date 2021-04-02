@@ -16,7 +16,7 @@ This module contains unit tests for the astro.denoising module.
 from unittest import TestCase
 import numpy as np
 import numpy.testing as npt
-from ..denoising import *
+from pysap.plugins.astro.denoising import denoise, noise, wavelet
 
 
 class DenoiseTestCase(TestCase):

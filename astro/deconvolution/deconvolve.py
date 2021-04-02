@@ -13,8 +13,8 @@ CONDA-VU Galaxy Image Deconvolution
 
 # System import
 import pysap
-from .linear import WaveletConvolve2
-from .wavelet_filters import get_cospy_filters
+from pysap.plugins.astro.deconvolution.linear import WaveletConvolve2
+from pysap.plugins.astro.deconvolution.wavelet_filters import get_cospy_filters
 from pysap.utils import condatvu_logo
 
 # Third party import

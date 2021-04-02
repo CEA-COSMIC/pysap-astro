@@ -15,7 +15,7 @@ The module contains functions for estimating the noise in images.
 
 import numpy as np
 from sf_tools.image.stamp import FetchStamps
-from .wavelet import decompose
+from pysap.plugins.astro.denoising.wavelet import decompose
 
 
 def sigma_clip(data, n_iter=3):
