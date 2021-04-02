@@ -41,8 +41,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install numpy==1.19.5 scipy==1.5.4
-          python -m pip install git+https://github.com/CEA-COSMIC/pysap
+          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install twine
@@ -100,8 +99,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install numpy==1.19.5 scipy==1.5.4
-          python -m pip install git+https://github.com/CEA-COSMIC/pysap
+          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install .
