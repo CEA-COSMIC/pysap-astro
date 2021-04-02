@@ -41,7 +41,9 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install coverage nose pytest pytest-cov pytest-pep8
+          python -m pip install git+https://github.com/CEA-COSMIC/pysap
+          python -m pip install coverage nose
+          python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install twine
           python -m pip install .
 
@@ -97,6 +99,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
+          python -m pip install git+https://github.com/CEA-COSMIC/pysap
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install .
