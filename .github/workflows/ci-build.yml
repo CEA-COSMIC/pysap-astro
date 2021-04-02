@@ -41,6 +41,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
+          python -m pip install modopt
           python -m pip install git+https://github.com/CEA-COSMIC/pysap
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
@@ -99,6 +100,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
+          python -m pip install modopt
           python -m pip install git+https://github.com/CEA-COSMIC/pysap
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
