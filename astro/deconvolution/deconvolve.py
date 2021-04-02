@@ -7,9 +7,7 @@
 # for details.
 ##########################################################################
 
-"""
-CONDA-VU Galaxy Image Deconvolution
-"""
+"""CONDA-VU Galaxy Image Deconvolution."""
 
 # System import
 import pysap
@@ -31,7 +29,7 @@ from modopt.signal.wavelet import filter_convolve
 
 
 def psf_convolve(data, psf, psf_rot=False):
-    """PSF Convolution
+    """PSF Convolution.
 
     Parameters
     ----------
@@ -47,7 +45,6 @@ def psf_convolve(data, psf, psf_rot=False):
     np.ndarray convolved image
 
     """
-
     if psf_rot:
         psf = rotate(psf)
 
@@ -55,7 +52,7 @@ def psf_convolve(data, psf, psf_rot=False):
 
 
 def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
-    """Get Sparsity Weights
+    """Get Sparsity Weights.
 
     Parameters
     ----------
@@ -74,7 +71,6 @@ def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
     np.ndarray weights
 
     """
-
     noise_est = sigma_mad(data)
 
     filter_conv = filter_convolve(np.rot90(psf, 2), filters)
@@ -85,9 +81,15 @@ def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
     return noise_est * filter_norm
 
 
-def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
-                           progress=True):
-    """Sparse Deconvolution with Condat-Vu
+def sparse_deconv_condatvu(
+    data,
+    psf,
+    n_iter=300,
+    n_reweights=1,
+    verbose=False,
+    progress=True,
+):
+    """Sparse Deconvolution with Condat-Vu.
 
     Parameters
     ----------
@@ -109,7 +111,6 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
     np.ndarray deconvolved image
 
     """
-
     # Print the algorithm set-up
     if verbose:
         print(condatvu_logo())

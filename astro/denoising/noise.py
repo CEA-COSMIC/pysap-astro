@@ -7,7 +7,7 @@
 # for details.
 ##########################################################################
 
-"""Noise
+"""Noise.
 
 The module contains functions for estimating the noise in images.
 
@@ -19,7 +19,7 @@ from pysap.plugins.astro.denoising.wavelet import decompose
 
 
 def sigma_clip(data, n_iter=3):
-    """ Sigma Clipping
+    """Sigma Clipping.
 
     Perform iterative sigma clipping on input data.
 
@@ -52,7 +52,6 @@ def sigma_clip(data, n_iter=3):
     (0.6415801460355164, 0.17648980804276407)
 
     """
-
     if not isinstance(data, np.ndarray):
         raise TypeError('Input data must be a numpy array.')
 
@@ -71,7 +70,7 @@ def sigma_clip(data, n_iter=3):
 
 
 def noise_est(data, n_iter=3):
-    """ Noise Estimate
+    """Noise Estimate.
 
     Estimate noise standard deviation of input data using smoothed median.
 
@@ -102,7 +101,6 @@ def noise_est(data, n_iter=3):
     0.11018895815851695
 
     """
-
     if not isinstance(data, np.ndarray) or data.ndim != 2:
         raise TypeError('Input data must be a 2D numpy array.')
 
@@ -116,7 +114,7 @@ def noise_est(data, n_iter=3):
 
 
 def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
-    """ Sigma Scales
+    """Sigma Scales.
 
     Get rescaled sigma values for wavelet decomposition.
 
@@ -148,7 +146,6 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     array([0.89079631, 0.20066385, 0.0855075 ])
 
     """
-
     if not isinstance(sigma, (int, float)):
         raise TypeError('Input sigma must be an int or a float.')
 

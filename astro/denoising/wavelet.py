@@ -7,9 +7,9 @@
 # for details.
 ##########################################################################
 
-"""Noise
+"""WAVELET.
 
-The module contains functions for estimating the noise in images.
+The module contains functions for wavelet decomposition.
 
 """
 
@@ -18,7 +18,7 @@ from pysap import load_transform
 
 
 def decompose(data, n_scales=4):
-    """ Decompose
+    """Decompose.
 
     Obtain the wavelet decomposition of the input date using an isotropic
     undecimated wavelet transform.
@@ -46,27 +46,25 @@ def decompose(data, n_scales=4):
     --------
     >>> import numpy as np
     >>> from pysap.astro.denoising.wavelet import decompose
-    >>> np.random.seed(0)
-    >>> data = np.random.ranf((3, 3))
+    >>> data = np.arange(9).reshape((3, 3)) * 0.1
     >>> decompose(data)
-    array([[[-0.06020004,  0.09427285, -0.03005594],
-            [-0.06932276, -0.21794325, -0.02309608],
-            [-0.22873539,  0.17666274,  0.19976479]],
+    array([[[-1.50000006e-01, -1.12500034e-01, -7.50000030e-02],
+            [-3.75000238e-02, -2.98023224e-08,  3.74999642e-02],
+            [ 7.49999881e-02,  1.12499952e-01,  1.49999976e-01]],
 
-           [[-0.04426706, -0.02943552, -0.01460403],
-            [-0.0475564 , -0.01650959,  0.01453722],
-            [-0.0240097 ,  0.02943558,  0.08288085]],
+          [[-1.56250030e-01, -1.17187500e-01, -7.81250298e-02],
+            [-3.90625000e-02,  0.00000000e+00,  3.90625000e-02],
+            [ 7.81250000e-02,  1.17187500e-01,  1.56250000e-01]],
 
-           [[-0.0094105 , -0.0110383 , -0.01266617],
-            [-0.00393927, -0.00619102, -0.00844282],
-            [ 0.01415205,  0.0110383 ,  0.00792474]],
+          [[-5.85937500e-02, -4.39453125e-02, -2.92968750e-02],
+            [-1.46484375e-02,  0.00000000e+00,  1.46484375e-02],
+            [ 2.92968750e-02,  4.39453125e-02,  5.85937500e-02]],
 
-           [[ 0.66269112,  0.6613903 ,  0.66008949],
-            [ 0.66570163,  0.66429865,  0.6628958 ],
-            [ 0.67618024,  0.67463636,  0.67309237]]])
+          [[ 3.64843786e-01,  3.73632848e-01,  3.82421911e-01],
+            [ 3.91210973e-01,  4.00000036e-01,  4.08789098e-01],
+            [ 4.17578161e-01,  4.26367223e-01,  4.35156286e-01]]])
 
     """
-
     if not isinstance(data, np.ndarray) or data.ndim != 2:
         raise TypeError('Input data must be a 2D numpy array.')
 
@@ -74,8 +72,10 @@ def decompose(data, n_scales=4):
         raise TypeError('n_scales must be a positive integer.')
 
     trans_name = 'BsplineWaveletTransformATrousAlgorithm'
-    trans = load_transform(trans_name)(nb_scale=n_scales,
-                                       padding_mode="symmetric")
+    trans = load_transform(trans_name)(
+        nb_scale=n_scales,
+        padding_mode="symmetric",
+    )
     trans.data = data
     trans.analysis()
 
@@ -85,7 +85,7 @@ def decompose(data, n_scales=4):
 
 
 def recombine(data):
-    """ Recombine
+    """Recombine.
 
     Recombine wavelet decomposition.
 
@@ -116,7 +116,6 @@ def recombine(data):
            [1.21142489, 1.57070222, 2.55727139]])
 
     """
-
     if not isinstance(data, np.ndarray) or data.ndim != 3:
         raise TypeError('Input data must be a 3D numpy array.')
 
