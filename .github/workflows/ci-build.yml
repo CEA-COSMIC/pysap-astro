@@ -36,7 +36,13 @@ jobs:
           conda list
           python --version
 
-      - name: Install Dependencies
+      - name: Install MacOS Dependencies
+        shell: bash -l {0}
+        if: runner.os == 'macOS'
+        run: |
+          brew install libomp
+
+      - name: Install Package Dependencies
         shell: bash -l {0}
         run: |
           python --version
