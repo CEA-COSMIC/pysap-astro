@@ -36,7 +36,7 @@ jobs:
           conda list
           python --version
 
-      - name: Install MacOS Dependencies
+      - name: Install macOS Dependencies
         shell: bash -l {0}
         if: runner.os == 'macOS'
         run: |
@@ -47,7 +47,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
+          python -m pip install git+https://github.com/CEA-COSMIC/pysap@develop
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install twine
@@ -99,7 +99,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           auto-activate-base: false
 
-      - name: Install MacOS Dependencies
+      - name: Install macOS Dependencies
         shell: bash -l {0}
         if: runner.os == 'macOS'
         run: |
@@ -110,7 +110,7 @@ jobs:
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
+          python -m pip install git+https://github.com/CEA-COSMIC/pysap@develop
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install .
