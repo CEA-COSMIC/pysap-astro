@@ -7,19 +7,17 @@
 # for details.
 ##########################################################################
 
-"""
-This module contains linears operators classes.
-"""
+"""Module contains linears operators classes."""
 
 from modopt.opt.linear import LinearParent
 from modopt.signal.wavelet import filter_convolve
 
 
 class WaveletConvolve2(LinearParent):
-    """Wavelet Convolution Class
+    """Wavelet Convolution Class.
 
     This class defines the wavelet transform operators via convolution with
-    predefined filters
+    predefined filters.
 
     Parameters
     ----------
@@ -34,5 +32,9 @@ class WaveletConvolve2(LinearParent):
 
         self._filters = filters
         self.op = lambda x: filter_convolve(x, self._filters, method=method)
-        self.adj_op = lambda x: filter_convolve(x, self._filters,
-                                                filter_rot=True, method=method)
+        self.adj_op = lambda x: filter_convolve(
+            x,
+            self._filters,
+            filter_rot=True,
+            method=method,
+        )

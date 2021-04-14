@@ -36,19 +36,26 @@ jobs:
           conda list
           python --version
 
-      - name: Install Dependencies
+      - name: Install MacOS Dependencies
+        shell: bash -l {0}
+        if: runner.os == 'macOS'
+        run: |
+          brew install libomp
+
+      - name: Install Package Dependencies
         shell: bash -l {0}
         run: |
           python --version
           python -m pip install --upgrade pip
-          python -m pip install coverage nose pytest pytest-cov pytest-pep8
+          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
+          python -m pip install coverage nose
+          python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install twine
           python -m pip install .
 
       - name: Run Tests
         shell: bash -l {0}
         run: |
-          export PATH=/usr/share/miniconda/bin:$PATH
           python setup.py test
 
       - name: Save Test Results
@@ -92,11 +99,18 @@ jobs:
           python-version: ${{ matrix.python-version }}
           auto-activate-base: false
 
-      - name: Install Dependencies
+      - name: Install MacOS Dependencies
+        shell: bash -l {0}
+        if: runner.os == 'macOS'
+        run: |
+          brew install libomp
+
+      - name: Install Package Dependencies
         shell: bash -l {0}
         run: |
           python --version
           python -m pip install --upgrade pip
+          python -m pip install git+https://github.com/sfarrens/pysap@release_prerp
           python -m pip install coverage nose
           python -m pip install pytest pytest-cov pytest-pycodestyle pytest-pydocstyle
           python -m pip install .
@@ -104,5 +118,4 @@ jobs:
       - name: Run Tests
         shell: bash -l {0}
         run: |
-          export PATH=/usr/share/miniconda/bin:$PATH
           python setup.py test
