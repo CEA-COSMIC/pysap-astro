@@ -56,7 +56,6 @@ jobs:
       - name: Run Tests
         shell: bash -l {0}
         run: |
-          conda info
           python setup.py test
 
       - name: Save Test Results
@@ -119,5 +118,4 @@ jobs:
       - name: Run Tests
         shell: bash -l {0}
         run: |
-          export PATH=/usr/share/miniconda/bin:$PATH
           python setup.py test
