@@ -7,14 +7,12 @@
 # for details.
 ##########################################################################
 
-"""
-CONDA-VU Galaxy Image Deconvolution
-"""
+"""CONDA-VU Galaxy Image Deconvolution."""
 
 # System import
 import pysap
-from .linear import WaveletConvolve2
-from .wavelet_filters import get_cospy_filters
+from pysap.plugins.astro.deconvolution.linear import WaveletConvolve2
+from pysap.plugins.astro.deconvolution.wavelet_filters import get_cospy_filters
 from pysap.utils import condatvu_logo
 
 # Third party import
@@ -31,7 +29,7 @@ from modopt.signal.wavelet import filter_convolve
 
 
 def psf_convolve(data, psf, psf_rot=False):
-    """PSF Convolution
+    """PSF Convolution.
 
     Parameters
     ----------
@@ -47,7 +45,6 @@ def psf_convolve(data, psf, psf_rot=False):
     np.ndarray convolved image
 
     """
-
     if psf_rot:
         psf = rotate(psf)
 
@@ -55,7 +52,7 @@ def psf_convolve(data, psf, psf_rot=False):
 
 
 def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
-    """Get Sparsity Weights
+    """Get Sparsity Weights.
 
     Parameters
     ----------
@@ -74,20 +71,27 @@ def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
     np.ndarray weights
 
     """
-
     noise_est = sigma_mad(data)
 
     filter_conv = filter_convolve(np.rot90(psf, 2), filters)
 
-    filter_norm = np.array([np.linalg.norm(a) * b * np.ones(data.shape)
-                            for a, b in zip(filter_conv, wave_thresh_factor)])
+    filter_norm = np.array([
+        np.linalg.norm(a) * b * np.ones(data.shape)
+        for a, b in zip(filter_conv, wave_thresh_factor)
+    ])
 
     return noise_est * filter_norm
 
 
-def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
-                           progress=True):
-    """Sparse Deconvolution with Condat-Vu
+def sparse_deconv_condatvu(
+    data,
+    psf,
+    n_iter=300,
+    n_reweights=1,
+    verbose=False,
+    progress=True,
+):
+    """Sparse Deconvolution with Condat-Vu.
 
     Parameters
     ----------
@@ -109,14 +113,15 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
     np.ndarray deconvolved image
 
     """
-
     # Print the algorithm set-up
     if verbose:
         print(condatvu_logo())
 
     # Define the wavelet filters
-    filters = (get_cospy_filters(data.shape,
-               transform_name='LinearWaveletTransformATrousAlgorithm'))
+    filters = get_cospy_filters(
+        data.shape,
+        transform_name='LinearWaveletTransformATrousAlgorithm'
+    )
 
     # Set the reweighting scheme
     reweight = cwbReweight(get_weights(data, psf, filters))
@@ -126,8 +131,11 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
     dual = np.ones(filters.shape)
 
     # Set the gradient operators
-    grad_op = GradBasic(data, lambda x: psf_convolve(x, psf),
-                        lambda x: psf_convolve(x, psf, psf_rot=True))
+    grad_op = GradBasic(
+        data,
+        lambda x: psf_convolve(x, psf),
+        lambda x: psf_convolve(x, psf, psf_rot=True),
+    )
 
     # Set the linear operator
     linear_op = WaveletConvolve2(filters)
@@ -137,13 +145,29 @@ def sparse_deconv_condatvu(data, psf, n_iter=300, n_reweights=1, verbose=False,
     prox_dual_op = SparseThreshold(linear_op, reweight.weights)
 
     # Set the cost function
-    cost_op = costObj([grad_op, prox_op, prox_dual_op], tolerance=1e-6,
-                      cost_interval=1, plot_output=True, verbose=verbose)
+    cost_op = costObj(
+        [grad_op, prox_op, prox_dual_op],
+        tolerance=1e-6,
+        cost_interval=1,
+        plot_output=True,
+        verbose=verbose,
+    )
 
     # Set the optimisation algorithm
-    alg = Condat(primal, dual, grad_op, prox_op, prox_dual_op, linear_op,
-                 cost_op, rho=0.8, sigma=0.5, tau=0.5, auto_iterate=False,
-                 progress=progress)
+    alg = Condat(
+        primal,
+        dual,
+        grad_op,
+        prox_op,
+        prox_dual_op,
+        linear_op,
+        cost_op,
+        rho=0.8,
+        sigma=0.5,
+        tau=0.5,
+        auto_iterate=False,
+        progress=progress,
+    )
 
     # Run the algorithm
     alg.iterate(max_iter=n_iter)

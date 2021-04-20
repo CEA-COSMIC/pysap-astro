@@ -1,26 +1,22 @@
 
-pySAP-astro
+PySAP-Astro
 ===============
 
-|travis| |coveralls| |python35| |python36| |python37|
+|travis| |codecov| |pypi|
 
 .. |travis| image:: https://travis-ci.org/CEA-COSMIC/pysap-astro.svg?branch=master
   :target: https://travis-ci.org/CEA-COSMIC/pysap-astro
 
-.. |coveralls| image:: https://coveralls.io/repos/github/CEA-COSMIC/pysap-astro/badge.svg?branch=master
-  :target: https://coveralls.io/github/CEA-COSMIC/pysap-astro
+.. |codecov| image:: https://codecov.io/gh/CEA-COSMIC/pysap-astro/branch/master/graph/badge.svg?token=XHJIQXV7AX
+  :target: https://codecov.io/gh/CEA-COSMIC/pysap-astro
 
-.. |python35| image:: https://img.shields.io/badge/python-3.5-green.svg
-  :target: https://www.python.org/
-
-.. |python36| image:: https://img.shields.io/badge/python-3.6-green.svg
-  :target: https://www.python.org/
-
-.. |python37| image:: https://img.shields.io/badge/python-3.7-green.svg
-  :target: https://www.python.org/
-
+.. |pypi| image:: https://img.shields.io/pypi/v/pysap-astro
+  :target: https://pypi.org/project/pysap-astro/
 
 Python Sparse data Analysis Package external ASTRO plugin.
+
+  This package is part of the PySAP plug-in framework and is not intended to
+  work as a stand-alone package.
 
 This work is made available by a community of people, amoung which the
 CEA Neurospin UNATI and CEA CosmoStat laboratories, in particular A. Grigis,
@@ -30,19 +26,5 @@ J.-L. Starck, P. Ciuciu, and S. Farrens.
 Important links
 ===============
 
-- Official pySAP source code repo: https://github.com/cea-cosmic/pysap
-- pySAP HTML documentation (last stable release): http://cea-cosmic.github.io/pysap
-
-
-Python Sparse data Analysis Package external ASTRO plugin.
-
-This work is made available by a community of people, amoung which the
-CEA Neurospin UNATI and CEA CosmoStat laboratories, in particular A. Grigis,
-J.-L. Starck, P. Ciuciu, and S. Farrens.
-
-
-Important links
-===============
-
-- Official pySAP source code repo: https://github.com/cea-cosmic/pysap
-- pySAP HTML documentation (last stable release): http://cea-cosmic.github.io/pysap
+- Official PySAP source code repo: https://github.com/CEA-COSMIC/pysap
+- PySAP HTML documentation (last stable release): https://python-pysap.readthedocs.io/en/latest/

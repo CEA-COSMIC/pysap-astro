@@ -36,10 +36,16 @@ setup(
     classifiers="CLASSIFIERS",
     author=AUTHOR,
     author_email="XXX",
-    version="0.0.0",
+    version="0.0.1",
     url="https://github.com/CEA-COSMIC/pysap-astro",
     packages=find_packages(),
     platforms="OS Independent",
+    install_requires=['sf_tools==2.0.4'],
     setup_requires=['pytest-runner', ],
-    tests_require=['pytest>=5.0.1', 'pytest-cov>=2.7.1', 'pytest-pep8'],
+    tests_require=[
+        'pytest==6.2.2',
+        'pytest-cov==2.11.1',
+        'pytest-pycodestyle==2.2.0',
+        'pytest-pydocstyle==2.2.0',
+    ],
 )
