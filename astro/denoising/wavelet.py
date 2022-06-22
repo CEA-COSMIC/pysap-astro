@@ -65,7 +65,7 @@ def decompose(data, n_scales=4):
             [ 4.17578161e-01,  4.26367223e-01,  4.35156286e-01]]])
 
     """
-    if not isinstance(data, numpy.ndarray) or data.ndim != 2:
+    if not isinstance(data, np.ndarray) or data.ndim != 2:
         raise TypeError('Input data must be a 2D numpy array.')
 
     if not isinstance(n_scales, int) or n_scales < 1:
@@ -116,7 +116,7 @@ def recombine(data):
            [1.21142489, 1.57070222, 2.55727139]])
 
     """
-    if not isinstance(data, numpy.ndarray) or data.ndim != 3:
+    if not isinstance(data, np.ndarray) or data.ndim != 3:
         raise TypeError('Input data must be a 3D numpy array.')
 
     return np.sum(data, axis=0)

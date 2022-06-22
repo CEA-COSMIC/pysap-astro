@@ -52,7 +52,7 @@ def sigma_clip(data, n_iter=3):
     (0.6415801460355164, 0.17648980804276407)
 
     """
-    if not isinstance(data, numpy.ndarray):
+    if not isinstance(data, np.ndarray):
         raise TypeError('Input data must be a numpy array.')
 
     if not isinstance(n_iter, int) or n_iter < 1:
@@ -101,7 +101,7 @@ def noise_est(data, n_iter=3):
     0.11018895815851695
 
     """
-    if not isinstance(data, numpy.ndarray) or data.ndim != 2:
+    if not isinstance(data, np.ndarray) or data.ndim != 2:
         raise TypeError('Input data must be a 2D numpy array.')
 
     ft_obj = FetchStamps(data, pixel_rad=1, all=True, pad_mode='edge')
@@ -149,7 +149,7 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     if not isinstance(sigma, (int, float)):
         raise TypeError('Input sigma must be an int or a float.')
 
-    if not isinstance(kernel_shape, (tuple, list, numpy.ndarray)):
+    if not isinstance(kernel_shape, (tuple, list, np.ndarray)):
         raise TypeError('kernel_shape must be a tuple, list or numpy array.')
 
     kernel_shape = np.array(kernel_shape)
