@@ -9,7 +9,7 @@
 
 """NOISE.
 
-The module defines functions for estimating the noise in images.
+This module defines functions for estimating the noise in images.
 
 """
 
@@ -38,9 +38,9 @@ def sigma_clip(data, n_iter=3):
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
     TypeError
-        For invalid input n_iter type
+        For invalid input ``n_iter`` type
 
     Examples
     --------
@@ -72,7 +72,8 @@ def sigma_clip(data, n_iter=3):
 def noise_est(data, n_iter=3):
     """Noise Estimate.
 
-    Estimate noise standard deviation of input data using smoothed median.
+    Estimate the standard deviation of the noise in the input data using
+    a smoothed median.
 
     Parameters
     ----------
@@ -84,12 +85,12 @@ def noise_est(data, n_iter=3):
     Returns
     -------
     float
-        Noise standard deviation
+        Standard deviation of the noise
 
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
 
     Examples
     --------
@@ -121,11 +122,11 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     Parameters
     ----------
     sigma : float
-        Noise standard deviation
+        Standard deviation of the noise
     n_scales : int, optional
         Number of wavelet scales, default is ``4``
     kernel_shape : tuple, list or numpy.ndarray, optional
-        Shape of dummy image kernel
+        Shape of dummy image kernel, default is ``(51, 51)``
 
     Returns
     -------
@@ -135,9 +136,9 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     Raises
     ------
     TypeError
-        For invalid sigma type
+        For invalid ``sigma`` type
     TypeError
-        For invalid kernel_shape type
+        For invalid ``kernel_shape`` type
 
     Examples
     --------

@@ -20,7 +20,7 @@ from pysap import load_transform
 def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
     """Get PySAP transform filters.
 
-    This method obtains wavelet filters by calling cospy
+    This method obtains wavelet filters using the transform name provided.
 
     Parameters
     ----------

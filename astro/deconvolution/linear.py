@@ -9,7 +9,7 @@
 
 """LINEAR.
 
-This module defines a linears operator classe for wavelet convolution.
+This module defines a linears operator class for wavelet convolution.
 
 """
 
@@ -28,7 +28,7 @@ class WaveletConvolve2(LinearParent):
     filters: numpy.ndarray
         Array of wavelet filter coefficients
     method : str {'astropy', 'scipy'}, optional
-        Convolution method (default is 'astropy')
+        Convolution method, default is ``astropy``
 
     """
 

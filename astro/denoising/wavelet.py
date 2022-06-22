@@ -9,7 +9,7 @@
 
 """WAVELET.
 
-The module defines functions for wavelet decomposition.
+This module defines functions for wavelet decomposition.
 
 """
 
@@ -20,7 +20,7 @@ from pysap import load_transform
 def decompose(data, n_scales=4):
     """Decompose.
 
-    Obtain the wavelet decomposition of the input date using an isotropic
+    Obtain the wavelet decomposition of the input data using an isotropic
     undecimated wavelet transform.
 
     Parameters
@@ -38,9 +38,9 @@ def decompose(data, n_scales=4):
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
     TypeError
-        For invalid input n_scales type
+        For invalid input ``n_scales`` type
 
     Examples
     --------
@@ -87,7 +87,7 @@ def decompose(data, n_scales=4):
 def recombine(data):
     """Recombine.
 
-    Recombine wavelet decomposition.
+    Recombine a wavelet decomposition.
 
     Parameters
     ----------
@@ -102,7 +102,7 @@ def recombine(data):
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
 
     Examples
     --------
