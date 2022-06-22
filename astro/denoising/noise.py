@@ -33,7 +33,7 @@ def sigma_clip(data, n_iter=3):
     Returns
     -------
     tuple
-        mean and standard deviation of clipped sample
+        Mean and standard deviation of clipped sample
 
     Raises
     ------

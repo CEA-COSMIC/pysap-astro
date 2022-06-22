@@ -35,7 +35,8 @@ def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
 
     Returns
     -------
-    numpy.ndarray 3D array of wavelet filters
+    numpy.ndarray
+        3D array of wavelet filters
 
     """
     # Adjust the shape of the input data.

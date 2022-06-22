@@ -49,7 +49,8 @@ def psf_convolve(data, psf, psf_rot=False):
 
     Returns
     -------
-    numpy.ndarray convolved image
+    numpy.ndarray
+        Convolved image
 
     """
     if psf_rot:
@@ -78,7 +79,8 @@ def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
 
     Returns
     -------
-    numpy.ndarray weights
+    numpy.ndarray
+        Weights
 
     """
     noise_est = sigma_mad(data)
@@ -123,7 +125,8 @@ def sparse_deconv_condatvu(
 
     Returns
     -------
-    numpy.ndarray deconvolved image
+    numpy.ndarray
+        Deconvolved image
 
     """
     # Print the algorithm set-up
