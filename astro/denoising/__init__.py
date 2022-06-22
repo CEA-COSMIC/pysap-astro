@@ -7,8 +7,10 @@
 # for details.
 ##########################################################################
 
-"""Module defines all the Astro denoising plugins."""
+"""DENOISING.
+
+This module provides tools for astrophysical image denoising.
+
+"""
 
 __all__ = ['denoise', 'noise', 'wavelet']
-
-from . import *

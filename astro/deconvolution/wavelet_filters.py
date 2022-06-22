@@ -7,7 +7,11 @@
 # for details.
 ##########################################################################
 
-"""Module contains methods for getting wavelet transform filters."""
+"""WAVELET FILTER.
+
+This module defines a function for getting wavelet transform filters.
+
+"""
 
 import numpy as np
 from pysap import load_transform
@@ -16,7 +20,7 @@ from pysap import load_transform
 def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
     """Get PySAP transform filters.
 
-    This method obtains wavelet filters by calling cospy
+    This method obtains wavelet filters using the transform name provided.
 
     Parameters
     ----------
@@ -25,13 +29,14 @@ def get_cospy_filters(data_shape, transform_name, n_scales=4, coarse=False):
     transform_name : str
         Name of wavelet transform
     n_scales : int, optional
-        Number of transform scales (default is 4)
+        Number of transform scales, default is ``4``
     coarse : bool, optional
-        Option to keep coarse scale (default is 'False')
+        Option to keep coarse scale, default is ``False``
 
     Returns
     -------
-    np.ndarray 3D array of wavelet filters
+    numpy.ndarray
+        3D array of wavelet filters
 
     """
     # Adjust the shape of the input data.

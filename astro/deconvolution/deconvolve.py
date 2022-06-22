@@ -7,7 +7,12 @@
 # for details.
 ##########################################################################
 
-"""CONDA-VU Galaxy Image Deconvolution."""
+"""DECONVOLVE.
+
+This module defines functions to perform galaxy image deconvolution using the
+Condat-Vu algorithm.
+
+"""
 
 # System import
 import pysap
@@ -31,18 +36,21 @@ from modopt.signal.wavelet import filter_convolve
 def psf_convolve(data, psf, psf_rot=False):
     """PSF Convolution.
 
+    Convolve the input data with the PSF provided.
+
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input data, 2D image
-    psf : np.ndarray
+    psf : numpy.ndarray
         Input PSF, 2D image
     psf_rot : bool, optional
-        Option to rotate the input PSF (default is False)
+        Option to rotate the input PSF, default is ``False``
 
     Returns
     -------
-    np.ndarray convolved image
+    numpy.ndarray
+        Convolved image
 
     """
     if psf_rot:
@@ -54,21 +62,25 @@ def psf_convolve(data, psf, psf_rot=False):
 def get_weights(data, psf, filters, wave_thresh_factor=np.array([3, 3, 4])):
     """Get Sparsity Weights.
 
+    Get the weights needed for the sparse regularisation term in the
+    deconvolution problem.
+
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input data, 2D image
-    psf : np.ndarray
+    psf : numpy.ndarray
         Input PSF, 2D image
-    filters : np.ndarray
+    filters : numpy.ndarray
         Wavelet filters
-    wave_thresh_factor : np.ndarray, optional
-        Threshold factors for each wavelet scale (default is
-        np.array([3, 3, 4]))
+    wave_thresh_factor : numpy.ndarray, optional
+        Threshold factors for each wavelet scale, default is
+        ``np.array([3, 3, 4])``
 
     Returns
     -------
-    np.ndarray weights
+    numpy.ndarray
+        Weights
 
     """
     noise_est = sigma_mad(data)
@@ -93,24 +105,28 @@ def sparse_deconv_condatvu(
 ):
     """Sparse Deconvolution with Condat-Vu.
 
+    Perform deconvolution using sparse regularisation with the Condat-Vu
+    algorithm.
+
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input data, 2D image
-    psf : np.ndarray
+    psf : numpy.ndarray
         Input PSF, 2D image
     n_iter : int, optional
-        Maximum number of iterations, default is 300
+        Maximum number of iterations, default is ``300``
     n_reweights : int, optional
-        Number of reweightings, default is 1
+        Number of reweightings, default is ``1``
     verbose : bool, optional
-        Verbosity option, default is True
+        Verbosity option, default is ``True``
     progress : bool, optional
-        Option to show progress bar, default is True
+        Option to show progress bar, default is ``True``
 
     Returns
     -------
-    np.ndarray deconvolved image
+    numpy.ndarray
+        Deconvolved image
 
     """
     # Print the algorithm set-up

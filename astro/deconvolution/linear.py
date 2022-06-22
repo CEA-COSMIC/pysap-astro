@@ -7,7 +7,11 @@
 # for details.
 ##########################################################################
 
-"""Module contains linears operators classes."""
+"""LINEAR.
+
+This module defines a linears operator class for wavelet convolution.
+
+"""
 
 from modopt.opt.linear import LinearParent
 from modopt.signal.wavelet import filter_convolve
@@ -21,10 +25,10 @@ class WaveletConvolve2(LinearParent):
 
     Parameters
     ----------
-    filters: np.ndarray
+    filters: numpy.ndarray
         Array of wavelet filter coefficients
     method : str {'astropy', 'scipy'}, optional
-        Convolution method (default is 'astropy')
+        Convolution method, default is ``astropy``
 
     """
 

@@ -7,9 +7,9 @@
 # for details.
 ##########################################################################
 
-"""Noise.
+"""NOISE.
 
-The module contains functions for estimating the noise in images.
+This module defines functions for estimating the noise in images.
 
 """
 
@@ -25,27 +25,27 @@ def sigma_clip(data, n_iter=3):
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input data array
     n_iter : int, optional
-        Number of iterations, default is 3
+        Number of iterations, default is ``3``
 
     Returns
     -------
     tuple
-        mean and standard deviation of clipped sample
+        Mean and standard deviation of clipped sample
 
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
     TypeError
-        For invalid input n_iter type
+        For invalid input ``n_iter`` type
 
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.noise import sigma_clip
+    >>> from astro.denoising.noise import sigma_clip
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> sigma_clip(data)
@@ -72,29 +72,30 @@ def sigma_clip(data, n_iter=3):
 def noise_est(data, n_iter=3):
     """Noise Estimate.
 
-    Estimate noise standard deviation of input data using smoothed median.
+    Estimate the standard deviation of the noise in the input data using
+    a smoothed median.
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input 2D-array
     n_iter : int, optional
-        Number of sigma clipping iterations, default is 3
+        Number of sigma clipping iterations, default is ``3``
 
     Returns
     -------
     float
-        Noise standard deviation
+        Standard deviation of the noise
 
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
 
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.noise import noise_est
+    >>> from astro.denoising.noise import noise_est
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> noise_est(data)
@@ -121,27 +122,27 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     Parameters
     ----------
     sigma : float
-        Noise standard deviation
+        Standard deviation of the noise
     n_scales : int, optional
-        Number of wavelet scales, default is 4
-    kernel_shape : tuple, list or np.ndarray, optional
-        Shape of dummy image kernel
+        Number of wavelet scales, default is ``4``
+    kernel_shape : tuple, list or numpy.ndarray, optional
+        Shape of dummy image kernel, default is ``(51, 51)``
 
     Returns
     -------
-    np.ndarray
+    numpy.ndarray
         Rescaled sigma values not including coarse scale
 
     Raises
     ------
     TypeError
-        For invalid sigma type
+        For invalid ``sigma`` type
     TypeError
-        For invalid kernel_shape type
+        For invalid ``kernel_shape`` type
 
     Examples
     --------
-    >>> from pysap.astro.denoising.noise import sigma_scales
+    >>> from astro.denoising.noise import sigma_scales
     >>> sigma_scales(1)
     array([0.89079631, 0.20066385, 0.0855075 ])
 
