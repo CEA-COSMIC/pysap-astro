@@ -5,7 +5,7 @@ PySAP-Astro
 |CI| |codecov| |pypi|
 
 .. |CI| image:: https://github.com/CEA-COSMIC/pysap-astro/workflows/CI/badge.svg
-  :target: https://github.com/CEA-COSMIC/modopt/actions?query=workflow%3ACI
+  :target: https://github.com/CEA-COSMIC/pysap-astro/actions?query=workflow%3ACI
 
 .. |codecov| image:: https://codecov.io/gh/CEA-COSMIC/pysap-astro/branch/master/graph/badge.svg?token=XHJIQXV7AX
   :target: https://codecov.io/gh/CEA-COSMIC/pysap-astro
