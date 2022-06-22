@@ -7,7 +7,11 @@
 # for details.
 ##########################################################################
 
-"""Module contains linears operators classes."""
+"""LINEAR.
+
+This module defines a linears operator classe for wavelet convolution.
+
+"""
 
 from modopt.opt.linear import LinearParent
 from modopt.signal.wavelet import filter_convolve

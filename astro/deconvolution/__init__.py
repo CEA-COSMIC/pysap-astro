@@ -7,6 +7,10 @@
 # for details.
 ##########################################################################
 
-"""Module defines all the Astro deconvolution plugins."""
+"""DECONVOLUTION.
+
+This module provides tools for astrophysical image deconvolution.
+
+"""
 
 __all__ = ['deconvolve', 'linear', 'wavelet_filters']

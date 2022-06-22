@@ -7,9 +7,9 @@
 # for details.
 ##########################################################################
 
-"""Noise.
+"""NOISE.
 
-The module contains functions for estimating the noise in images.
+The module defines functions for estimating the noise in images.
 
 """
 

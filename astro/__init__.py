@@ -7,7 +7,11 @@
 # for details.
 ##########################################################################
 
-"""Module defines all the Astro related plugins."""
+"""PYSAP-ASTRO.
+
+This plug-in provides tools for astrophysical data processing.
+
+"""
 
 __all__ = ['deconvolution', 'denoising']
 

@@ -7,7 +7,12 @@
 # for details.
 ##########################################################################
 
-"""Galaxy Image Denoising."""
+"""DENOISE.
+
+This module defines a function to perform galaxy image denoising using
+wavelets.
+
+"""
 
 import numpy as np
 from modopt.signal.noise import thresh

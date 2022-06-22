@@ -7,7 +7,12 @@
 # for details.
 ##########################################################################
 
-"""CONDA-VU Galaxy Image Deconvolution."""
+"""DECONVOLVE.
+
+This module defines functions to perform galaxy image deconvolution using the
+Condat-Vu algorithm.
+
+"""
 
 # System import
 import pysap

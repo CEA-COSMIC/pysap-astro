@@ -7,7 +7,11 @@
 # for details.
 ##########################################################################
 
-"""Module contains methods for getting wavelet transform filters."""
+"""WAVELET FILTER.
+
+This module defines a function for getting wavelet transform filters.
+
+"""
 
 import numpy as np
 from pysap import load_transform

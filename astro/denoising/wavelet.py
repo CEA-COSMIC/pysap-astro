@@ -9,7 +9,7 @@
 
 """WAVELET.
 
-The module contains functions for wavelet decomposition.
+The module defines functions for wavelet decomposition.
 
 """
 
