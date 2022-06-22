@@ -9,6 +9,7 @@
 
 # System import
 import os
+from pathlib import Path
 from setuptools import setup, find_packages
 
 # Set the package release version
@@ -31,13 +32,16 @@ Jean-Luc Starck <jl.stark@cea.fr>
 Philippe Ciuciu <philippe.ciuciu@cea.fr>
 """
 
+# Source package description from README.md
+this_directory = Path(__file__).parent
+long_description = (this_directory / 'README.rst').read_text()
+
 # Write setup
 setup(
     name='pysap-astro',
     description='Python Sparse data Analysis Package external ASTRO plugin.',
-    long_description=(
-        'Python Sparse data Analysis Package external ASTRO plugin.'
-    ),
+    long_description=long_description,
+    long_description_content_type='text/x-rst',
     license='CeCILL-B',
     classifiers='CLASSIFIERS',
     author=AUTHOR,
