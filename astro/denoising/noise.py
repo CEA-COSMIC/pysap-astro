@@ -25,10 +25,10 @@ def sigma_clip(data, n_iter=3):
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input data array
     n_iter : int, optional
-        Number of iterations, default is 3
+        Number of iterations, default is ``3``
 
     Returns
     -------
@@ -45,14 +45,14 @@ def sigma_clip(data, n_iter=3):
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.noise import sigma_clip
+    >>> from astro.denoising.noise import sigma_clip
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> sigma_clip(data)
     (0.6415801460355164, 0.17648980804276407)
 
     """
-    if not isinstance(data, np.ndarray):
+    if not isinstance(data, numpy.ndarray):
         raise TypeError('Input data must be a numpy array.')
 
     if not isinstance(n_iter, int) or n_iter < 1:
@@ -76,10 +76,10 @@ def noise_est(data, n_iter=3):
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input 2D-array
     n_iter : int, optional
-        Number of sigma clipping iterations, default is 3
+        Number of sigma clipping iterations, default is ``3``
 
     Returns
     -------
@@ -94,14 +94,14 @@ def noise_est(data, n_iter=3):
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.noise import noise_est
+    >>> from astro.denoising.noise import noise_est
     >>> np.random.seed(0)
     >>> data = np.random.ranf((3, 3))
     >>> noise_est(data)
     0.11018895815851695
 
     """
-    if not isinstance(data, np.ndarray) or data.ndim != 2:
+    if not isinstance(data, numpy.ndarray) or data.ndim != 2:
         raise TypeError('Input data must be a 2D numpy array.')
 
     ft_obj = FetchStamps(data, pixel_rad=1, all=True, pad_mode='edge')
@@ -123,13 +123,13 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     sigma : float
         Noise standard deviation
     n_scales : int, optional
-        Number of wavelet scales, default is 4
-    kernel_shape : tuple, list or np.ndarray, optional
+        Number of wavelet scales, default is ``4``
+    kernel_shape : tuple, list or numpy.ndarray, optional
         Shape of dummy image kernel
 
     Returns
     -------
-    np.ndarray
+    numpy.ndarray
         Rescaled sigma values not including coarse scale
 
     Raises
@@ -141,7 +141,7 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
 
     Examples
     --------
-    >>> from pysap.astro.denoising.noise import sigma_scales
+    >>> from astro.denoising.noise import sigma_scales
     >>> sigma_scales(1)
     array([0.89079631, 0.20066385, 0.0855075 ])
 
@@ -149,7 +149,7 @@ def sigma_scales(sigma, n_scales=4, kernel_shape=(51, 51)):
     if not isinstance(sigma, (int, float)):
         raise TypeError('Input sigma must be an int or a float.')
 
-    if not isinstance(kernel_shape, (tuple, list, np.ndarray)):
+    if not isinstance(kernel_shape, (tuple, list, numpy.ndarray)):
         raise TypeError('kernel_shape must be a tuple, list or numpy array.')
 
     kernel_shape = np.array(kernel_shape)

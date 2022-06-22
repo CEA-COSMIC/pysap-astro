@@ -10,5 +10,3 @@
 """Module defines all the Astro deconvolution plugins."""
 
 __all__ = ['deconvolve', 'linear', 'wavelet_filters']
-
-from . import *

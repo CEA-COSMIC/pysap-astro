@@ -21,7 +21,7 @@ class WaveletConvolve2(LinearParent):
 
     Parameters
     ----------
-    filters: np.ndarray
+    filters: numpy.ndarray
         Array of wavelet filter coefficients
     method : str {'astropy', 'scipy'}, optional
         Convolution method (default is 'astropy')

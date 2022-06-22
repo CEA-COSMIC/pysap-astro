@@ -11,14 +11,19 @@
 import os
 from setuptools import setup, find_packages
 
+# Set the package release version
+major = 0
+minor = 0
+patch = 2
+version = '.'.join(str(value) for value in (major, minor, patch))
 
 # Global parameters
 CLASSIFIERS = [
-    "Development Status :: 1 - Planning",
-    "Environment :: Console",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Topic :: Scientific/Engineering"]
+    'Development Status :: 1 - Planning',
+    'Environment :: Console',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Topic :: Scientific/Engineering']
 AUTHOR = """
 Antoine Grigis <antoine.grigis@cea.fr>
 Samuel Farrens <samuel.farrens@cea.fr>
@@ -28,24 +33,25 @@ Philippe Ciuciu <philippe.ciuciu@cea.fr>
 
 # Write setup
 setup(
-    name="pysap-astro",
-    description="Python Sparse data Analysis Package external ASTRO plugin.",
-    long_description=("Python Sparse data Analysis Package external ASTRO "
-                      "plugin."),
-    license="CeCILL-B",
-    classifiers="CLASSIFIERS",
+    name='pysap-astro',
+    description='Python Sparse data Analysis Package external ASTRO plugin.',
+    long_description=(
+        'Python Sparse data Analysis Package external ASTRO plugin.'
+    ),
+    license='CeCILL-B',
+    classifiers='CLASSIFIERS',
     author=AUTHOR,
-    author_email="XXX",
-    version="0.0.1",
-    url="https://github.com/CEA-COSMIC/pysap-astro",
+    author_email='samuel.farrens@cea.fr',
+    version=version,
+    url='https://github.com/CEA-COSMIC/pysap-astro',
     packages=find_packages(),
-    platforms="OS Independent",
-    install_requires=['sf_tools==2.0.4'],
+    platforms='OS Independent',
+    install_requires=['sf_tools>=2.0.4'],
     setup_requires=['pytest-runner', ],
     tests_require=[
-        'pytest==6.2.2',
-        'pytest-cov==2.11.1',
-        'pytest-pycodestyle==2.2.0',
-        'pytest-pydocstyle==2.2.0',
+        'pytest>=6.2.2',
+        'pytest-cov>=2.11.1',
+        'pytest-pycodestyle>=2.2.0',
+        'pytest-pydocstyle>=2.2.0',
     ],
 )

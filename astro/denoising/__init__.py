@@ -10,5 +10,3 @@
 """Module defines all the Astro denoising plugins."""
 
 __all__ = ['denoise', 'noise', 'wavelet']
-
-from . import *
