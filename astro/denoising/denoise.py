@@ -7,7 +7,12 @@
 # for details.
 ##########################################################################
 
-"""Galaxy Image Denoising."""
+"""DENOISE.
+
+This module defines a function to perform galaxy image denoising using
+wavelets.
+
+"""
 
 import numpy as np
 from modopt.signal.noise import thresh
@@ -22,20 +27,20 @@ def denoise(image, n_scales=4):
 
     Parameters
     ----------
-    image : np.ndarray
+    image : numpy.ndarray
         Input image
     n_scales : int
         Number of wavelet scales to use
 
     Returns
     -------
-    np.ndarray
+    numpy.ndarray
         Denoised image
 
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.denoise import denoise
+    >>> from astro.denoising.denoise import denoise
     >>> data = np.arange(9).reshape((3, 3)) * 0.1
     >>> denoise(data)
     array([[0.15000001, 0.21250004, 0.27500001],

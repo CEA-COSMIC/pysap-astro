@@ -9,7 +9,7 @@
 
 """WAVELET.
 
-The module contains functions for wavelet decomposition.
+This module defines functions for wavelet decomposition.
 
 """
 
@@ -20,32 +20,32 @@ from pysap import load_transform
 def decompose(data, n_scales=4):
     """Decompose.
 
-    Obtain the wavelet decomposition of the input date using an isotropic
+    Obtain the wavelet decomposition of the input data using an isotropic
     undecimated wavelet transform.
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input 2D-array
     n_scales : int, optional
-        Number of wavelet scales, default is 4
+        Number of wavelet scales, default is ``4``
 
     Returns
     -------
-    np.ndarray
+    numpy.ndarray
         Wavelet decomposition 3D-array
 
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
     TypeError
-        For invalid input n_scales type
+        For invalid input ``n_scales`` type
 
     Examples
     --------
     >>> import numpy as np
-    >>> from pysap.astro.denoising.wavelet import decompose
+    >>> from astro.denoising.wavelet import decompose
     >>> data = np.arange(9).reshape((3, 3)) * 0.1
     >>> decompose(data)
     array([[[-1.50000006e-01, -1.12500034e-01, -7.50000030e-02],
@@ -87,22 +87,22 @@ def decompose(data, n_scales=4):
 def recombine(data):
     """Recombine.
 
-    Recombine wavelet decomposition.
+    Recombine a wavelet decomposition.
 
     Parameters
     ----------
-    data : np.ndarray
+    data : numpy.ndarray
         Input 3D-array
 
     Returns
     -------
-    np.ndarray
+    numpy.ndarray
         Recombined 2D-array
 
     Raises
     ------
     TypeError
-        For invalid input data type
+        For invalid input ``data`` type
 
     Examples
     --------
