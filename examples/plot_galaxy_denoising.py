@@ -1,85 +1,95 @@
-# -*- coding: utf-8 -*-
 """
 Galaxy Image Denoising
 ======================
 
-In this tutorial we will remove the noise from an example galaxy image.
+.. codeauthor:: Samuel Farrens <samuel.farrens@cea.fr>
 
-Import Dependencies
+In this tutorial we will remove the noise from an example galaxy image using
+the PySAP-Astro plug-in.
+
+Import dependencies
 -------------------
 
-Import functions from PySAP and ModOpt.
+Import functions from PySAP and
+`ModOpt <https://cea-cosmic.github.io/ModOpt/>`_.
 
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
-from pysap import Image
 from pysap.data import get_sample_data
 from astro.denoising.denoise import denoise
 from modopt.signal.noise import add_noise
 
-#############################################################################
-# Load the image of galaxy NGC2997
+# %%
+# Clean image
+# -----------
+#
+# First, we load the image of galaxy NGC2997 from the PySAP sample data sets.
 
 galaxy = get_sample_data('astro-ngc2997')
 
-#############################################################################
-# Show the clean galaxy image
+# %%
+# Then we can show the clean galaxy image that we will attempt to recover.
 
 plt.imshow(galaxy)
 plt.show()
 
-#############################################################################
-# Generate noisy observation
-# --------------------------
+# %%
+# Generate a noisy observation
+# ----------------------------
 #
-# Add random Gaussian noise with standard deviation 100 using the `add_noise`
-# function.
+# To simulate an observation of NGC2997 we add random Gaussian noise with
+# standard deviation ``100`` using the
+# ModOpt :py:func:`add_noise <modopt.signal.noise.add_noise>` function.
 
 obs_data = add_noise(galaxy.data, sigma=100)
 
-#############################################################################
-# Create a PySAP image object
+# %%
+# Now we can show the noisy galaxy image.
 
-image_obs = Image(data=np.abs(obs_data))
-
-#############################################################################
-# Show the noisy galaxy image
-
-plt.imshow(image_obs)
+plt.imshow(obs_data)
 plt.show()
 
-#############################################################################
+# %%
+# .. note::
+#
+#  :math:`\sigma=100` is quite excesive, but we can more easily visualise the
+#  noise added to the image in this example.
+
+# %%
 # Denoise
 # -------
 #
-# Use the `sparse_deconv_condatvu` function to deconvolve the noisy image and
-# set the maximum number of iterations to 3000.
+# We will use the :py:func:`denoise <astro.denoising.denoise.denoise>` function
+# from PySAP-Astro to denoise the noisy image. We set the number of wavelet
+# scales to ``4``.
 
-denoise_data = denoise(obs_data, n_scales=4)
+denoised_data = denoise(obs_data, n_scales=4)
 
-#############################################################################
-# Create a PySAP image object for the result
+# %%
+# We can show the denoised galaxy image.
 
-image_rec = Image(data=np.abs(denoise_data))
-
-#############################################################################
-# Show the deconvolved galaxy image
-
-plt.imshow(image_rec)
+plt.imshow(denoised_data)
 plt.show()
 
-#############################################################################
+# %%
 # Residual
 # --------
 #
-# Create a PySAP image object for the residual
+# Next, we calculate the residual of our denoised image to get a measure of
+# how well the denoising process performed.
 
-residual = Image(data=np.abs(galaxy.data - denoise_data))
+residual = np.abs(galaxy.data - denoised_data)
 
-#############################################################################
-# Show the residual
+# %%
+# Finally, we can show the residual.
 
 plt.imshow(residual)
 plt.show()
+
+# %%
+# .. tip::
+#
+#  Typically for a denoising problem we are aiming for a residual without any
+#  structure, i.e. just noise.
