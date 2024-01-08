@@ -79,7 +79,7 @@ def decompose(data, n_scales=4):
     trans.data = data
     trans.analysis()
 
-    res = np.array(trans.analysis_data, dtype=np.float)
+    res = np.array(trans.analysis_data, dtype=np.float64)
 
     return res
 
