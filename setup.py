@@ -15,7 +15,7 @@ from setuptools import setup, find_packages
 # Set the package release version
 major = 0
 minor = 0
-patch = 2
+patch = 3
 version = '.'.join(str(value) for value in (major, minor, patch))
 
 # Global parameters

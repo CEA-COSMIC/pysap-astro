@@ -15,5 +15,5 @@ This plug-in provides tools for astrophysical data processing.
 
 __all__ = ['deconvolution', 'denoising']
 
-version_info = (0, 0, 2)
+version_info = (0, 0, 3)
 __version__ = '.'.join(str(c) for c in version_info)
